@@ -1,25 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
+import Main from "./components/Main/Main";
+import {makeStyles} from "@material-ui/core";
+import * as React from 'react'
+import {connect, Provider} from "react-redux";
+import MainContainer from "./components/Main/MainContainer";
+import store from "./redux/redux-store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const useStyles = makeStyles(theme => ({
+
+}))
+
+const App = React.memo(({}) => {
+
+    let styles = useStyles();
+
+    return (
+        <MainContainer/>
+    )
+})
+
+const mapStateToProps = (state) => {
+    return {
+
+    }
 }
 
-export default App;
+let AppContainer = connect(mapStateToProps, { })(App);
+
+let Application = () => {
+    return (
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    )
+}
+
+
+
+export default Application;
